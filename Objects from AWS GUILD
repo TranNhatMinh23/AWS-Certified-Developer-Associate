@@ -1,0 +1,452 @@
+Chapter 1 Introduction to AWS Cloud API
+
+1. Which of the following is typically used to sign API calls to AWS services?
+A. Customer master key (CMK)
+B. AWS access key
+C. IAM user name and password
+D. Account number
+2. When you make API calls to AWS services, for most services those requests are directed at a 
+specific endpoint that corresponds to which of the following?
+A. AWS facility
+B. AWS Availability Zone
+C. AWS Region
+D. AWS edge location
+3. When you’re configuring a local development machine to make AWS API calls, which of the 
+following is the simplest secure method of obtaining an API credential?
+A. Create an IAM user, assign permissions by adding the user to an IAM group with IAM 
+policies attached, and generate an access key for programmatic access.
+B. Sign in with your email and password, and visit My Security Credentials to generate an 
+access key.
+C. Generate long-term credentials for a built-in IAM role.
+D. Use your existing user name and password by configuring local environment variables.
+4. You have a large number of employees, and each employee already has an identity in an 
+external directory. How might you manage AWS API credentials for each employee so that 
+they can interact with AWS for short-term sessions?
+A. Create an IAM user and credentials for each member of your organization.
+B. Share a single password through a file stored in an encrypted Amazon S3 bucket.
+C. Define a set of IAM roles, and establish a trust relationship between your directory 
+and AWS.
+D. Configure the AWS Key Management Service (AWS KMS) to store credentials for each user.
+5. You have a team member who needs access to write records to an existing Amazon 
+DynamoDB table within your account. How might you grant write permission to this 
+specific table and only this table?
+A. Write a custom IAM policy that specifies the table as the resource, and attach that 
+policy to the IAM user for the team member.
+B. Attach the DynamoDBFullAccess managed policy to the IAM role used by the team 
+member.
+C. Delete the table and recreate it. Permissions are set when the DynamoDB table 
+is created.
+D. Create a new user within DynamoDB, and assign table write permissions.
+6. You created a Movies DynamoDB table in the AWS Management Console, but when you 
+try to list your DynamoDB tables by using the Java SDK, you do not see this table. Why?
+A. DynamoDB tables created in the AWS Management Console are not accessible from 
+the API.
+B. Your SDK may be listing your resources from a different AWS Region in which the 
+table does not exist.
+C. The security group applied to the Movies table is keeping it hidden.
+D. Listing tables is supported only in C# and not in the Java SDK.
+7. You make an API request to describe voices offered by Amazon Polly by using the AWS CLI, 
+and you receive the following error message:
+Could not connect to the endpoint URL:
+https://polly.us-east-1a.amazonaws.com/v1/voices
+What went wrong?
+A. Your API credentials have been rejected.
+B. You have incorrectly configured the AWS Region for your API call.
+C. Amazon Polly does not offer a feature to describe the list of available voices.
+D. Amazon Polly is not accessible from the AWS CLI because it is only in the AWS SDK.
+8. To what resource does this IAM policy grant access, and for which actions?
+{
+"Version": "2012-10-17",
+"Statement": {
+ "Effect": "Allow",
+ "Action": "s3:ListBucket",
+ "Resource": "arn:aws:s3:::example_bucket"
+}
+}
+A. The policy grants full access to read the objects in the Amazon S3 bucket.
+B. The policy grants the holder the permission to list the contents of the Amazon S3 
+bucket called example_bucket.
+C. Nothing. The policy was valid only until October 17, 2012 (2012-10-17), and is now 
+expired.
+D. The policy grants the user access to list the contents of all Amazon S3 buckets within 
+the current account.
+9. When an IAM user makes an API call, that user’s long-term credentials are valid in which 
+context?
+A. Only in the AWS Region in which their identity resides
+B. Only in the Availability Zone in which their identity resides
+C. Only in the edge location in which their identity resides
+D. Across multiple AWS Regions
+10. When you use identity federation to assume a role, where are the credentials you use to 
+make AWS API calls generated?
+A. Access key ID and secret access key are generated locally on the client.
+B. The AWS Security Token Service (AWS STS) generates the access key ID, secret access 
+key, and session token.
+C. The AWS Key Management Service (AWS KMS) generates a customer master key 
+(CMK).
+D. Your Security Assertion Markup Language (SAML) identity provider generates the 
+access key ID, secret access key, and session token.
+11. You have an on-premises application that needs to sample data from all your Amazon 
+DynamoDB tables. You have defined an IAM user for your application called 
+TableAuditor. How can you give the TableAuditor user read access to new DynamoDB 
+tables as soon they are created in your account?
+A. Define a custom IAM policy that lists each DynamoDB table. Revoke the access key, 
+and issue a new access key for TableAuditor when tables are created.
+B. Create an IAM user and attach one custom IAM policy per AWS Region that has 
+DynamoDB tables.
+C. Add the TableAuditor user to the IAM role DynamoDBReadOnlyAccess.
+D. Attach the AWS managed IAM policy AmazonDynamoDBReadOnlyAccess to the 
+TableAuditor user.
+12. The principals who have access to assume an IAM role are defined in which document?
+A. IAM access policy
+B. IAM trust policy
+C. MS grant token
+D. AWS credentials file
+13. A new developer has joined your small team. You would like to help your team member set 
+up a development computer for access to the team account quickly and securely. How do 
+you proceed?
+A. Generate an access key based on your IAM user, and share it with your team member.
+B. Create a new directory with AWS Directory Service, and assign permissions in the AWS 
+Key Management Service (AWS KMS).
+C. Create an IAM user, add it to an IAM group that has the appropriate permissions, and 
+generate a long-term access key.
+D. Create a new IAM role for this team member, assign permissions to the role, and 
+generate a long-term access key.
+14. You have been working with the Amazon Polly service in your application by using the 
+Python SDK for Linux. You are building a second application in C#, and you would like to 
+run that application on a separate Windows Server with .NET. How can you proceed?
+A. Migrate all your code for all applications to C#, and modify your account to a 
+Windows account.
+B. Go to the Amazon Polly service, and change the supported languages to include .NET.
+C. Install the AWS SDK for .NET on your Windows Server, and leave your existing 
+application unchanged.
+D. Implement a proxy service that accepts your API requests, and translate them to 
+Python.
+15. You are a Virginia-based company, and you have been asked to implement a custom 
+application exclusively for customers in Australia. This application has no dependencies on 
+any of your existing applications. What is a method you use to keep the customer latency to 
+this new application low?
+A. Set up an AWS Direct Connect (DX) between your on-premises environment and US 
+East (N Virginia), and host the application from your own data center in Virginia.
+B. Create all resources for this application in the Asia Pacific (Sydney) Region, and 
+manage them from your current account.
+C. Deploy the application to the US East (N Virginia) Region, and select Amazon EC2 
+instances with enhanced networking.
+D. It does not matter which region you select, because all resources are automatically 
+replicated globally.
+Chapter 1: Introduction to AWS 
+Cloud API
+1. B. The specific credentials include the access key ID and secret access key. If the access key 
+is valid only for a short-term session, the credentials also include a session token.
+AWS uses the user name and passwords for working with the AWS Management Console, 
+not for working with the APIs. Data encryption uses the customer master keys, not API 
+access.
+2. C. Most AWS API services are regional in scope. The service is running and replicating 
+your data across multiple Availability Zones within an AWS Region. You choose a regional 
+API endpoint either from your default configuration or by explicitly setting a location for 
+your API client.
+3. A. The AWS SDK relies on access keys, not passwords. The best practice is to use AWS 
+Identity and Access Management (IAM) credentials and not the AWS account credentials. Comparing IAM users or IAM roles, only IAM users can have long-term security 
+credentials.
+4. C. Although you can generate IAM users for everyone, this introduces management overhead of a new set of long-term credentials. If you already have an external directory of your 
+organization’s users, use IAM roles and identity federation to provide short-term, sessionbased access to AWS.
+5. A. The permissions for DynamoDBFullAccess managed policy grant access to all Amazon 
+DynamoDB tables in your account. Write a custom policy to scope the access to a 
+specific table. You can update the permissions of a user independently from the lifecycle of 
+the table. DynamoDB does not have its own concept of users, but it uses the AWS API and 
+relies on IAM.
+6. B. You can view or manage your AWS resources with the console, AWS CLI, or AWS SDK. 
+The core functionality of each SDK is powered by a common set of web services on the 
+backend. Most AWS services are isolated by AWS Region.
+7. B. If you look closely at the URL, the AWS Region string is incorrectly set as us-east-1a, 
+which is specific to the Availability Zone. An AWS Region string ends in a number, and the 
+correct configuration is us-east-1. If the error was related to API credentials, you would 
+receive a more specific error related to credentials, such as AccessDenied.
+8. B. This policy allows access to the s3:ListBucket operation on example_bucket as a 
+specific bucket. This does not grant access to operations on the objects within the bucket. 
+IAM is granular. The date in the Version attribute is a specific version of the IAM policy 
+language and not an expiration.
+9. D. The long-term credentials are not limited to a single AWS Region. IAM is a global service, and IAM user credentials are valid across different AWS Regions. However, when the 
+API call is made, a signing key is derived from the long-term credentials, and that signing 
+key is scoped to a region, service, and day.
+10. B. The AssumeRole method of the AWS Security Token Service (AWS STS) returns the 
+security credentials for the role that include the access key ID, secret access key, and session 
+token. AWS Key Management Service (AWS KMS) is not used for API signing. The identity 
+provider may provide a SAML assertion, but AWS STS generates the AWS API credentials.
+11. D. The DynamoDBReadOnlyAccess policy is a built-in policy that applies to the resource *
+wildcard, which means that it applies to any and all DynamoDB tables accessible from the 
+account regardless of when those tables were created. Because IAM policies are related to 
+the IAM user, not the access key, rotating the key does not affect the policy. IAM policies 
+are also global in scope, so you do not need a custom one per AWS Region. You can add 
+IAM users to IAM groups but not IAM roles. Instead, roles must be assumed for short-term 
+sessions.
+12. B. The IAM trust policy defines the principals who can request role credentials from the 
+AWS STS. Access policies define what API actions can be performed with the credentials 
+from the role.
+13. C. You can define an IAM user for your new team member and add the IAM user to an 
+IAM group to inherit the appropriate permissions. The best practice is not to use AWS 
+account root user credentials. Though you can use AWS Directory Service to track users, 
+this answer is incomplete, and the AWS KMS is not related to permissions. Roles can be 
+assumed only for short-term sessions—there are no long-term credentials directly associated with the role.
+14. C. The AWS API backend is accessed through web service calls and is operating system– 
+and programming language–agnostic. You do not need to do anything special to enable 
+specific programming languages other than downloading the appropriate SDK.
+15. B. The primary latency concern is for customers accessing the data, and there are no 
+explicit dependencies on existing infrastructure in the United States. Physically locating the 
+application resources closer to these users in Australia reduces the distance that the information must travel and therefore decreases the latency.
+Chapter 2: Introduction to Compute 
+and Networking
+1. When you launch an Amazon Elastic Compute Cloud (Amazon EC2) instance, which of the 
+following is the most specific type of AWS entity in which you can place it?
+A. Region
+B. Availability Zone
+C. Edge location
+D. Data center
+2. You have saved SSH connection information for an Amazon Elastic Compute Cloud (Amazon 
+EC2) instance that you launched in a public subnet. You previously stopped the instance the 
+last time you used it. Now that you have started the instance, you are unable to connect to 
+the instance using the saved information. Which of the following could be the cause?
+A. Your SSH key pair has automatically expired.
+B. The public IP of the instance has changed.
+C. The security group rules have expired.
+D. SSH is enabled only for the first boot of an Amazon EC2 instance.
+3. You are working from a new location today. You are unable to initiate a Remote Desktop 
+Protocol (RDP) to your Windows instance, which is located in a public subnet. What could 
+be the cause?
+A. Your new IP address may not match the inbound security group rules.
+B. Your new IP address may not match the outbound security group rules.
+C. RDP is not available for Windows instances, only SSH.
+D. RDP is enabled only for the first 24 hours of your instance runtime.
+4. You have a backend Amazon EC2 instance providing a web service to your web server 
+instances. Your web servers are in a public subnet. You would like to block inbound 
+requests from the internet to your backend instance but still allow the instance to make 
+API requests over the public internet. What steps must you take? (Select TWO.)
+A. Launch the instance in a private subnet and rely on a NAT gateway in a public subnet 
+to forward outbound internet requests.
+B. Configure the security group for the instance to explicitly deny inbound requests from 
+the internet.
+C. Configure the network access control list (network ACL) for the public subnet to 
+explicitly deny inbound web requests from the internet.
+D. Modify the inbound security group rules for the instance to allow only inbound 
+requests from your web servers.
+5. You have launched an Amazon Elastic Compute Cloud (Amazon EC2) instance and loaded 
+your application code on it. You have now discovered that the instance is missing applications on which your code depends. How can you resolve this issue?
+A. Modify the instance profile to include the software dependencies.
+B. Create an AWS Identity and Access Management (IAM) user, and sign in to the 
+instance to install the dependencies.
+C. Sign in to the instance as the default user, and install any additional dependencies that 
+you need.
+D. File an AWS Support ticket, and request to install the software on your instance.
+6. How can code running on an Amazon Elastic Compute Cloud (Amazon EC2) instance 
+automatically discover its public IP address?
+A. The public IP address is presented to the OS on the instance automatically. No extra 
+steps are required.
+B. The instance can query another Amazon EC2 instance in the same Amazon Virtual 
+Private Cloud (Amazon VPC).
+C. You must use a third-party service to look up the public IP.
+D. The instance can make an HTTP query to the Amazon EC2 metadata service at 
+169.254.169.254.
+7. How can you customize the software of your Amazon Elastic Compute Cloud (Amazon 
+EC2) instance beyond what the Amazon Machine Image (AMI) provides?
+A. Provide a user data attribute at launch that contains a script or directives to install 
+additional packages.
+B. Additional packages are installed automatically by placing them in a special Amazon 
+Simple Storage Service (Amazon S3) bucket in your account.
+C. You do not have permissions to install new software on Amazon EC2 aside from what 
+is in the AMI.
+D. Unlock the instance using the AWS Key Management Service (AWS KMS) and then 
+sign in to install new packages.
+8. You have a process running on an Amazon Elastic Compute Cloud (Amazon EC2) instance 
+that exceeds the 2 GB of RAM allocated to the instance. This is causing the process to run 
+slowly. How can you resolve the issue?
+A. Stop the instance, change the instance type to one with more RAM, and then start the 
+instance.
+B. Modify the RAM allocation for the instance while it is running.
+C. Take a snapshot of the data and then launch a new instance. You cannot change the 
+RAM allocation.
+D. Send an email to AWS Support to install additional RAM on the server.
+9. You have launched an Amazon Elastic Compute Cloud (Amazon EC2) Windows instance, 
+and you would like to connect to it using the Remote Desktop Protocol. The instance is in 
+a public subnet and has a public IP address. How do you find the password to the Administrator account?
+A. Decrypt the password by using the private key from the Amazon EC2 key pair that you 
+used to launch the instance.
+B. Use the password that you provided when you launched the instance.
+C. Create a new AWS Identity and Access Management (IAM) role, and use the password 
+for that role.
+D. Create an IAM user, and use the password for that user.
+10. What steps must you take to ensure that an Amazon EC2 instance can receive web requests 
+from customers on the internet? (Select THREE.)
+A. Assign a public IP address to the instance.
+B. Launch the instance in a subnet where the route table routes internet-bound traffic to 
+an internet gateway.
+C. Launch the instance in a subnet where the route table rules send internet-bound traffic 
+to a NAT gateway.
+D. Set the outbound rules for the security group to allow HTTP and HTTPS traffic.
+E. Set the inbound rules for the security group to allow HTTP and HTTPS traffic.
+11. Which of the following are true about Amazon Machine Images (AMI)? (Select TWO.)
+A. AMI can be used to launch one or multiple Amazon EC2 instances.
+B. AMI is automatically available in all AWS Regions.
+C. All AMIs are created and maintained by AWS.
+D. AMIs are available for both Windows and Linux instances.
+12. Which of the following are true about Amazon Elastic Compute Cloud (Amazon EC2) 
+instance types? (Select TWO.)
+A. All Amazon EC2 instance types include instance store for ephemeral storage.
+B. All Amazon EC2 instance types can use EBS volumes for persistent storage.
+C. Amazon EC2 instances cannot be resized once launched.
+D. Some Amazon EC2 instances may have access to GPUs or other hardware 
+accelerators.
+13. Which of the following actions are valid based on the Amazon Elastic Compute Cloud 
+(Amazon EC2) instance lifecycle? (Select TWO.)
+A. Starting a previously terminated instance
+B. Starting a previously stopped instance
+C. Rebooting a stopped instance
+D. Stopping a running instance
+14. You have a development Amazon Elastic Compute Cloud (Amazon EC2) instance where 
+you have installed Apache Web Server and MySQL. How do you verify that the web server 
+application can communicate with the database given that they are both running on the 
+same instance?
+A. Modify the security group for the instance.
+B. Assign the instance a public IP address.
+C. Modify the network access control list (network ACL) for the instance.
+D. No extra configuration is required.
+15. What type of route must exist in the associated route table for a subnet to be a public subnet?
+A. A route to a VPN gateway
+B. Only the local route is required.
+C. A route to an internet gateway
+D. A route to a NAT gateway or NAT instance
+E. A route to an Amazon VPC endpoint
+16. What type of route must exist in the associated route table for a subnet to be a private subnet that allows outbound internet access?
+A. A route to a VPN gateway
+B. Only the local route is required.
+C. A route to an internet gateway
+D. A route to a NAT gateway or NAT instance
+E. A route to an Amazon Virtual Private Cloud (Amazon VPC) endpoint
+17. Which feature of Amazon Virtual Private Cloud (Amazon VPC) enables you to see which 
+network requests are being accepted or rejected in your Amazon VPC?
+A. Internet gateway
+B. NAT gateway
+C. Route table
+D. Amazon VPC Flow Log
+18. Which AWS service enables you to track the CPU utilization of an Amazon Elastic 
+Compute Cloud (Amazon EC2) instance?
+A. AWS Config
+B. AWS Lambda
+C. Amazon CloudWatch
+D. Amazon Virtual Private Cloud (Amazon VPC)
+19. What happens to the data stored on an Amazon Elastic Block Store (Amazon EBS) volume 
+when you stop an Amazon Elastic Compute Cloud (Amazon EC2) instance?
+A. The data is moved to Amazon Simple Storage Service (Amazon S3).
+B. The data persists in the EBS volume.
+C. The volume is deleted.
+D. An EBS-backed instance cannot be stopped.
+20. Which programming language can you use to write the code that runs on an Amazon EC2 
+instance?
+A. C++
+B. Java
+C. Ruby
+D. JavaScript
+E. Python
+F. All of the above
+21. You have launched an Amazon EC2 instance in a public subnet. The instance has a public 
+IP address, and you have confirmed that the Apache web server is running. However, your 
+internet users are unable to make web requests to the instance. How can you resolve the 
+issue? (Select TWO.)
+A. Modify the security group to allow outbound traffic on port 80 to anywhere.
+B. Modify the security group for the web server to allow inbound traffic port 80 from 
+anywhere.
+C. Modify the security group for the web server to allow inbound traffic on port 443 
+from anywhere.
+D. Modify the security group to allow outbound traffic from port 443 to anywhere.
+22. Which of the following are the customer’s responsibility concerning Amazon EC2 
+instances? (Select TWO.)
+A. Decommissioning storage hardware
+B. Patching the guest operating system
+C. Securing physical access to the host machine
+D. Managing the sign-in accounts and credentials on the guest operating system
+E. Maintaining the software that runs on the underlying host machine
+Chapter 2: Introduction to Compute 
+and Networking
+1. B. You launch Amazon Elastic Compute Cloud (Amazon EC2) instances into specific subnets that are tied to specific Availability Zones. You can look up the Availability Zone in 
+which you have launched an Amazon EC2 instance. While an Availability Zone is part of a 
+region, this answer is not the most specific. You do not get to choose the specific data center, and edge locations do not support EC2.
+2. B. When you stop an Amazon EC2 instance, its public IP address is released. When you 
+start it again, a new public IP address is assigned. If you require a public IP address to be 
+persistently associated with the instance, allocate an Elastic IP address. SSH key pairs and 
+security group rules do not have any built-in expiration, and SSH is enabled as a service by 
+default. It is available even after restarts. Security groups do not expire.
+3. A. A restricted rule that allows RDP from only certain IP addresses may block your request 
+if you have a new IP address because of your location. Because you are trying to connect to 
+the instance, verify that an appropriate inbound rule is set as opposed to an outbound rule. 
+For many variants of Windows, RDP is the default connection mechanism, and it defaults 
+to enabled even after a reboot.
+4. A, D. The NAT gateway allows outbound requests to the external API to succeed while 
+preventing inbound requests from the internet. Configuring the security group to allow 
+only inbound requests from your web servers allows outbound requests to succeed because 
+the default rule for the security group allows outbound requests to the APIs that your web 
+service needs. Option B is incorrect because security group rules cannot explicitly deny 
+traffic; they can only allow it. Option C is incorrect because network ACLs are stateless, 
+and this rule would prevent all of the replies to your outbound web requests from entering 
+the public subnet.
+5. C. You are in full control over the software on your instance. The default user that was 
+created when the instance launched has full control over the guest operating system and 
+can install the necessary software. Instance profiles are unrelated to the software on the 
+instance.
+6. D. You can query the Amazon EC2 metadata service for this information. Networking 
+within the Amazon Virtual Private Cloud (Amazon VPC) is based on private IP addresses, 
+so this rules out options A and B. Because the metadata service is available, you are not 
+required to use a third-party service, which eliminates option C.
+7. A. You can implement user data to execute scripts or directives that install additional 
+packages. Even though you can use Amazon Simple Storage Service (Amazon S3) to stage 
+software installations, there is no special bucket. You have full control of EC2 instances, 
+including the software. AWS KMS is unrelated to software installation.
+8. A. Amazon EC2 instances are resizable. You can change the RAM available by changing 
+the instance type. Option B is incorrect because you can change this attribute only when the 
+instance is stopped. Although option C is one possible solution, it is not required. Option D 
+is incorrect because the RAM available on the host server does not change the RAM allocation for your EC2 instance.
+9. A. AWS generates the default password for the instance and encrypts it by using the public 
+key from the Amazon EC2 key pair used to launch the instance. You do not select a password when you launch an instance. You can decrypt this with the private key. IAM users 
+and IAM roles are not for providing access to the operating system on the Amazon EC2 
+instance.
+10. A, B, E. For an instance to be directly accessible as a web server, you must assign a public IP address, place the instance in a public subnet, and ensure that the inbound security 
+group rules allow HTTP/HTTPS. A public subnet is one in which there is a direct route to 
+an internet gateway. Option C defines a private subnet. Because security groups are stateful, 
+you are not required to set the outbound rules—the replies to the inbound request are automatically allowed.
+11. A, D. You can use an AMI as a template for launching any number of Amazon EC2 
+instances. AMIs are available for various versions of Windows and Linux. Option B is false 
+because AMIs are local to the region in which they were created unless they are explicitly 
+copied. Option C is false because, in addition to AWS-provided AMIs, there are third-party 
+AMIs in the marketplace, and you can create your own AMIs.
+12. B, D. Option B is true; Amazon Elastic Block Store (Amazon EBS) provides persistent storage for all types of EC2 instances. Option D is true because hardware accelerators, such as 
+GPU and FGPA, are accessible depending on the type of instance. Option A is false because 
+instance store is provided only for a few Amazon EC2 instance types. Option C is incorrect 
+because Amazon EC2 instances can be resized after they are launched, provided that they 
+are stopped during the resize. Hardware accelerators, such as GPU and FGPA, are accessible depending on the type of instance.
+13. B, D. Only instances in the running state can be started, stopped, or rebooted.
+14. D. Both the web server and the database are running on the same instance, and they can 
+communicate locally on the instance. Option A is incorrect because security groups apply 
+to only network traffic that leaves the instance. Option C is incorrect because network 
+ACLs apply only to traffic leaving a subnet. Similarly, option B is incorrect because the 
+public IP address is required for inbound requests from the internet but is not necessary for 
+requests local to the same instance.
+15. C. A public subnet is one in which there is a route that directs internet traffic (0.0.0.0/0) to 
+an internet gateway. None of the other routes provides a direct route to the internet, which 
+is required to be a public subnet.
+16. D. A private subnet that allows outbound internet access must provide an indirect route to 
+the internet. This is provided by a route that directs internet traffic to a NAT gateway or 
+NAT instance. Option C is incorrect because a route to an internet gateway would make 
+this a public subnet with a direct connection to the internet. The remaining options do not 
+provide access to the internet.
+17. D. Amazon VPC Flow Logs have metadata about each traffic flow within your Amazon 
+VPC and show whether the connection was accepted or rejected. The other responses do 
+not provide a log of network traffic.
+18. C. Amazon CloudWatch is the service that tracks metrics, including CPU utilization for an 
+Amazon EC2 instance. The other services are not responsible for tracking metrics.
+19. B. EBS volumes provide persistent storage for an Amazon EC2 instance. The data is persisted until the volume is deleted and therefore persists on the volume when the instance is 
+stopped.
+20. F. You can install any software you want on an Amazon EC2 instance, including any interpreters required to run your application code.
+21. B, C. Web requests are typically made on port 80 for HTTP and port 443 for HTTPS. 
+Because security groups are stateful, you must set only the inbound rule. Options A and D 
+are unnecessary because the security group automatically allows the outbound replies to the 
+inbound requests.
+22. B, D. The customer is responsible for the guest operating system and above. Options C and 
+E fall under AWS responsibility. AWS is responsible for the virtualization layer, underlying 
+host machines, and all the way down to the physical security of the facilities
