@@ -61,3 +61,5 @@ https://www.downloadfreepdf.net/DVA-C01-pdf-download.html
 https://github.com/g23988/CDA_resource/blob/master/Sample_question/sample_question_200/AWS%20Certified%20Developer%20-%20Associate%20Exam%20Dumps%20with%20PDF%20and%20VCE%20Download%20(1-30).pdf
 
 200 question
+https://www.omni-academy.com/amazon-aws-certified-developer-associate-uae/
+400 question
